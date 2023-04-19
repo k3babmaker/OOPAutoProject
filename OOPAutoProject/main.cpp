@@ -12,6 +12,44 @@ public:
 		number_of_sales = 0;
 	}
 
+	//default constructor
+	Auto() {
+		cout << "default constructor" << endl;
+
+		brand = "no brand";
+		model = "no model";
+		number_of_sales = 1;
+	}
+
+	// constructor with arguments
+	Auto(string br, string mod, int num) {
+		
+		cout << "constructor with arguments" << endl;
+
+		brand = br;
+		model = mod;
+		number_of_sales = num;
+	}
+
+	Auto(string br, string mod) {
+		brand = br;
+		model = mod;
+	}
+	
+	// copy-constructor
+	Auto(const Auto &au) {
+		cout << "copy-constructor" << endl;
+
+		brand = au.brand;
+		model = au.model;
+		number_of_sales = au.number_of_sales;
+	}
+
+	//destructor
+	~Auto() {
+		cout << "destructor" << endl;
+	}
+
 	string convert() {
 		string msg = "";
 		msg += brand;
@@ -24,20 +62,16 @@ public:
 
 };
 
+Auto test(){
+	Auto au;
+	return au;
+}
+
 int main() {
-	Auto a1;
+	Auto a1("BMW", "X5", 10);
 
-	a1.brand = "BMW";
-	a1.model = "X5";
-	a1.number_of_sales = 10;
-
-	cout << "Before: " << endl;
-	cout << a1.convert() << endl;
-
-	a1.clear();
-
-	cout << "\nAfter: " << endl;
-	cout << a1.convert() << endl;
+	Auto au = test();
+	cout << au.convert() << endl;
 
 	return 0;
 }
